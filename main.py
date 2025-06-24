@@ -7,6 +7,7 @@ class ContentContainer(Container):
         super().__init__()
         self.expand = 4
         self.border_radius = 8
+        self.bgcolor = Colors.GREEN_900
 #------------------------------------------------------------------------------------------------------------
 class ContentViewContainer(Container):
     def __init__(self, homePage) -> None:
@@ -16,7 +17,7 @@ class ContentViewContainer(Container):
 
         self.contentContainer = ContentContainer()
         self.sidebarContainer = SidebarContainer(self)
-        self.detailsContainer = DetailsContainer(self)
+#        self.detailsContainer = DetailsContainer(self)
 
         self.toolBar = Container(
             bgcolor = "#17181d",

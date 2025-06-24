@@ -1,3 +1,4 @@
+
 from flet import *
 from Sidebar import*
 from Details import*
@@ -17,7 +18,7 @@ class ContentViewContainer(Container):
 
         self.contentContainer = ContentContainer()
         self.sidebarContainer = SidebarContainer(self)
-#        self.detailsContainer = DetailsContainer(self)
+        self.detailsContainer = DetailsContainer(self)
 
         self.toolBar = Container(
             bgcolor = "#17181d",

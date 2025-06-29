@@ -1,6 +1,6 @@
 
 from flet import *
-#from Sidebar import*
+from Sidebar import*
 #from Details import*
 
 class ContentContainer(Container):

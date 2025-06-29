@@ -1,14 +1,8 @@
 
 from flet import *
-from Sidebar import*
-from Details import*
+#from Sidebar import*
+#from Details import*
 
-class ContentContainer(Container):
-    def __init__(self) -> None:
-        super().__init__()
-        self.expand = 4
-        self.border_radius = 8
-        self.bgcolor = Colors.GREEN_900
 #------------------------------------------------------------------------------------------------------------
 class ContentViewContainer(Container):
     def __init__(self, homePage) -> None:

@@ -17,24 +17,26 @@ class ContentViewContainer(Container):
         self.expand = 4
 
         self.contentContainer = ContentContainer()
+        self.sidebarContainer = SidebarContainer(self)
+#        self.detailsContainer = DetailsContainer(self)
 
         self.toolBar = Container(
             bgcolor = "#17181d",
-            margin = margin.only(left = 0, top = -8, right = -8),
+            margin = margin.only(left = 0, top = -8, right = -8), 
             content = Row(
                 controls = [
                     IconButton(
                         icon = Icons.VIEW_SIDEBAR_OUTLINED, 
                         icon_color = Colors.GREY_500,
                         tooltip = "Anzeige der Seitenleiste auswählen",
-#                        on_click = self.sidebarAnimate,
+                        on_click = self.sidebarAnimate,
                     ),
                     Container(expand = True),
                     PopupMenuButton(
                         icon = Icons.MORE_VERT,
                         tooltip = "Mail Account konfigurieren",
                         items = [
-                            PopupMenuItem(icon = Icons.MAIL_LOCK_OUTLINED, text = "Mail Account konfigurieren"), #on_click = lambda e: self.configureAccount(e)),
+                            PopupMenuItem(icon = Icons.MAIL_LOCK_OUTLINED, text = "Mail Account konfigurieren", on_click = lambda e: self.configureAccount(e)),
                         ],
                         opacity = 0.5,
                     ), 
@@ -42,11 +44,25 @@ class ContentViewContainer(Container):
             )
         )
 
+        self.contentContainer.content = Row(
+            controls = [
+#                self.detailsContainer,
+                Container(
+                    bgcolor = Colors.BLUE_900,
+                    border_radius = 8,
+                    expand = 1,
+                    alignment = alignment.top_left,
+                    content = Text("Detail 2 Container"),                     
+                ),
+                # self.rezeptContainer,
+                # self.tabbarContainer,
+            ]
+        )
 
         self.content = Row(
             expand = True,
             controls = [
-#                self.sidebarContainer,
+                self.sidebarContainer,
                 Column(
                     expand = True,
                     controls = [
@@ -56,6 +72,15 @@ class ContentViewContainer(Container):
                 ),
             ]
         )
+
+    def sidebarAnimate(self, e):
+        self.sidebarContainer.width = 0 if self.sidebarContainer.width == 280 else 280  
+        self.sidebarContainer.update()
+
+    def configureAccount(self, e):
+        print("configureAccount")
+        # configureEmailAccount = ConfigureEmailAccount(self)
+        # configureEmailAccount.showDialog(e)
 #------------------------------------------------------------------------------------------------------------
 #------------------------------------------------------------------------------------------------------------
 def main(page: Page):

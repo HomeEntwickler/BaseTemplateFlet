@@ -3,15 +3,37 @@ from flet import *
 #from Sidebar import*
 #from Details import*
 
+class ContentContainer(Container):
+    def __init__(self) -> None:
+        super().__init__()
+        self.expand = 4
+        self.border_radius = 8
+        self.bgcolor = Colors.GREEN_900
+
+        self.content = Text("Text von ContentViewContainer")
 #------------------------------------------------------------------------------------------------------------
 class ContentViewContainer(Container):
     def __init__(self, homePage) -> None:
         super().__init__()
         self.homePage = homePage
         self.expand = 4
-        self.bgcolor = Colors.GREEN_900
 
-        self.content = Text("Text von ContentViewContainer")
+        self.contentContainer = ContentContainer()
+
+        self.content = Row(
+            expand = True,
+            controls = [
+#                self.sidebarContainer,
+                Column(
+                    expand = True,
+                    controls = [
+                        Text("Toolbar Container"),
+#                        self.toolBar,
+                        self.contentContainer,
+                    ]
+                ),
+            ]
+        )
 #------------------------------------------------------------------------------------------------------------
 #------------------------------------------------------------------------------------------------------------
 def main(page: Page):

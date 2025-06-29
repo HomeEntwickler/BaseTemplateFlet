@@ -17,6 +17,7 @@ class ContentViewContainer(Container):
         self.expand = 4
         self.bgcolor = Colors.GREEN_900
 
+        self.content = Text("Text von ContentViewContainer")
 #------------------------------------------------------------------------------------------------------------
 #------------------------------------------------------------------------------------------------------------
 def main(page: Page):
